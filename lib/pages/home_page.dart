@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       ),
       
     ),
-    drawer: Drawer(backgroundColor: Colors.greenAccent),
+    drawer: Drawer(backgroundColor: Color.fromARGB(255, 76, 78, 78)),
   
     );
     
