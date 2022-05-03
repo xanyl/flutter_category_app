@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
@@ -22,7 +23,6 @@ class MyTheme {
 
 
 
-  static get GoogleFonts => null;
 }
 
 
