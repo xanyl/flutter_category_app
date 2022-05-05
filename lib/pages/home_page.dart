@@ -1,27 +1,31 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
+import '../models/catalog.dart';
+import '../widgets/drawer.dart';
+import '../widgets/item_widget.dart';
 
 class HomePage extends StatelessWidget {
-    final int days = 30;
-    final String name = "Anil Kumar Tiwari";
+  final int days = 30;
+  final String name = "AK";
   @override
   Widget build(BuildContext context) {
+    var list = List.generate(5, (index) => CatalogModel.items[0]);
+    final dummyList = list;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Catalog App",style: TextStyle(color: Colors.black),),
+        title: Text("Catalog App"),
       ),
-      body:Center(
-      child: Center(
-        child: Container(
-          child: Text("Welcome to the $days of the flutter by $name")
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemCount: dummyList.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              item: dummyList[index],
+            );
+          },
+        ),
       ),
-      ),
-      
-    ),
-    drawer: MyDrawer()
-  
+      drawer: MyDrawer(),
     );
-    
   }
 }
