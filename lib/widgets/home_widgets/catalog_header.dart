@@ -11,12 +11,8 @@ class CatalogHeader extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          "Catalog App".text.xl4.bold.color(MyTheme.darkBluishColor).make(),
-          "Trending Products"
-              .text
-              .xl2
-              .color(Color.fromARGB(255, 124, 5, 145))
-              .make()
+          "Catalog App".text.xl4.bold.color(context.theme.accentColor).make(),
+          "Trending Products".text.xl2.make()
         ],
       ),
     );
