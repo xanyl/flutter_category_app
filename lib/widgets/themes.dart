@@ -13,9 +13,20 @@ class MyTheme {
         primaryTextTheme: GoogleFonts.latoTextTheme(),
         appBarTheme: AppBarTheme(
           color: Colors.white,
-          elevation: 0.5,
+          elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.black),
-          textTheme: Theme.of(context).textTheme,
+          toolbarTextStyle: Theme.of(context)
+              .textTheme
+              .copyWith(
+                  headline6: context.textTheme.headline6
+                      ?.copyWith(color: Colors.black))
+              .bodyText2,
+          titleTextStyle: Theme.of(context)
+              .textTheme
+              .copyWith(
+                  headline6: context.textTheme.headline6
+                      ?.copyWith(color: Colors.black))
+              .headline6,
         ),
       );
 
@@ -29,16 +40,18 @@ class MyTheme {
         accentColor: Colors.white,
         appBarTheme: AppBarTheme(
           color: Colors.black,
-          elevation: 0.5,
+          elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white),
-          textTheme: Theme.of(context).textTheme,
+          textTheme: Theme.of(context).textTheme.copyWith(
+              headline6:
+                  context.textTheme.headline6?.copyWith(color: Colors.white)),
         ),
       );
 
   //colors
 
   static Color creamColor = Color(0xfff5f5f5);
-  static Color darkcreamColor = Color.fromARGB(255, 42, 42, 44);
-  static Color darkBluishColor = Color.fromARGB(255, 46, 42, 63);
+  static Color darkcreamColor = Color.fromARGB(255, 77, 75, 75);
+  static Color darkBluishColor = Color.fromARGB(255, 52, 50, 61);
   static Color lightBluishColor = Color.fromARGB(255, 174, 99, 223);
 }
