@@ -1,18 +1,20 @@
-import 'dart:convert';
+// ignore_for_file: null_closures
 
 class CatalogModel {
-  static List<Item> items = [];
+ static List<Item> items = [];
 
   //get Items by ID
- Item getById(id) =>
-      items.firstWhere((element) => element.id = id, orElse: null);
+  Item getById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse:null);
 
   //Get item by position
- Item getByPosition(int pos) => items[pos];
+  Item getByPosition(int pos) => items[pos];
+
+  
 }
 
 class Item {
-  int id;
+  late final int id;
   final String name;
   final String desc;
   final num price;
@@ -20,7 +22,8 @@ class Item {
   final String image;
 
   Item(
-      {required this.id,
+      {
+      required this.id,
       required this.name,
       required this.desc,
       required this.price,
@@ -34,6 +37,8 @@ class Item {
       price: map["price"],
       color: map["color"],
       image: map["image"]);
+
+  get text => null;
   toMap() => {
         "id": id,
         "name": name,
