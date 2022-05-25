@@ -6,9 +6,14 @@ class MyStore extends VxStore {
   late CatalogModel catalog;
   late CartModel cart;
 
+
+
   MyStore() {
     catalog = CatalogModel();
     cart = CartModel();
     cart.catalog = catalog;
+    
   }
+
+  get items =>  cart.items;
 }
