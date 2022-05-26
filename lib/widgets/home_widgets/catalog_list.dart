@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_application_1/pages/home_detail_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -9,7 +10,21 @@ import 'catalog_image.dart';
 class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return !context.isMobile
+    ? GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 20),
+        shrinkWrap: true, //space giving
+        itemCount: CatalogModel.items.length,
+        itemBuilder: (context, index) {
+          final catalog = CatalogModel.items[index];
+          return InkWell(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeDetailPage(catalog: catalog))),
+              child: CatalogItem(catalog: catalog));
+        }):
+        ListView.builder(
         shrinkWrap: true, //space giving
         itemCount: CatalogModel.items.length,
         itemBuilder: (context, index) {
@@ -33,9 +48,7 @@ class CatalogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return VxBox(
-        child: Row(
-      children: [
+    var children2 = [
         Hero(
             tag: Key(catalog.id.toString()),
             child: CatalogImage(image: catalog.image)),
@@ -55,8 +68,13 @@ class CatalogItem extends StatelessWidget {
               ],
             ).pOnly(right: 8.0)
           ],
-        )),
-      ],
-    )).color(context.cardColor).rounded.square(150).make().py8();
+        ).p(context.isMobile?0:16)
+        ),
+      ];
+    return VxBox(
+        child: context.isMobile? Row(
+      children: children2,
+    ):Column(children: children2,)
+    ).color(context.cardColor).rounded.square(150).make().py8();
   }
 }
